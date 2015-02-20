@@ -1,0 +1,21 @@
+{
+    "name": "sso-server",
+    "version": "1.0.0",
+    "homepage": "http://github.com/dragonservice/sso-server",
+    "scripts": {
+        "start": "node app.js",
+        "forever": "./node_modules/forever/bin/forever -w app.js"
+    },
+    "dependencies": {
+        "dragonnodejs": "^4.0.2",
+        "express": "^4.11.0",
+        "cors": "^2.5.3"
+    },
+    "devDependencies": {
+        "forever": "^0.14.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dragonservice/sso-server.git"
+    }
+}
