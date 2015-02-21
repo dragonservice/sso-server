@@ -7,9 +7,8 @@
         "forever": "./node_modules/forever/bin/forever -w app.js"
     },
     "dependencies": {
-        "dragonnodejs": "^4.0.2",
-        "express": "^4.11.0",
-        "cors": "^2.5.3"
+        "dragonnodejs": "^4.0.3",
+        "dragonnodejs-express": "^2.0.1"
     },
     "devDependencies": {
         "forever": "^0.14.1"
