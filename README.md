@@ -7,4 +7,4 @@
 - Git commit/push into the master after changes
 
 # Try it online
-http://dragonservice-sso.herokuapp.com/
+http://sso-server.herokuapp.com/
