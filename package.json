@@ -8,7 +8,8 @@
     },
     "dependencies": {
         "dragonnodejs": "^4.0.4",
-        "dragonnodejs-express": "^2.1.1"
+        "dragonnodejs-express": "^2.1.1",
+        "dragonnodejs-mongodb": "^3.0.2"
     },
     "devDependencies": {
         "forever": "^0.14.1"

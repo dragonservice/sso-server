@@ -21,6 +21,13 @@ var config = {
                 header: {
                     'X-Powered-By': null
                 }
+            }],
+            [require('dragonnodejs-mongodb'), {
+                db: {
+                    uri: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/sso-server?auto_reconnect=true',
+                    options: { safe: true }
+                },
+                collections: {}
             }]
         ],
         directory: {
