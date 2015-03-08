@@ -3,6 +3,9 @@
 // Load the libraries and modules
 
 var config = {
+    libraries: {
+        bodyParser: require('body-parser')
+    },
     directory: __dirname + '/modules/',
     modules: {
         npm: [
@@ -31,6 +34,7 @@ var config = {
             }]
         ],
         directory: {
+            app: {},
             config: {
                 route: '/',
                 config: function () {
