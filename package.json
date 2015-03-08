@@ -11,6 +11,7 @@
         "dragonnodejs-express": "^2.1.1",
         "dragonnodejs-mongodb": "^3.0.2",
         "body-parser": "^1.12.0",
+        "password-hash": "^1.2.2",
         "underscore": "^1.7.0",
         "validator": "^3.27.0"
     },

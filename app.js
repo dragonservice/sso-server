@@ -5,6 +5,7 @@
 var config = {
     libraries: {
         bodyParser: require('body-parser'),
+        passwordHash: require('password-hash'),
         underscore: require('underscore'),
         validator: require('validator')
     },
