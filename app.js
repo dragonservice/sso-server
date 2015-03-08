@@ -32,7 +32,11 @@ var config = {
                     uri: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/sso-server?auto_reconnect=true',
                     options: { safe: true }
                 },
-                collections: {}
+                collections: {
+                    users: [
+                        [{ email: 1 }, { sparse: true, unique: true }]
+                    ]
+                }
             }]
         ],
         directory: {
