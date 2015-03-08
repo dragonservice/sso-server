@@ -4,7 +4,9 @@
 
 var config = {
     libraries: {
-        bodyParser: require('body-parser')
+        bodyParser: require('body-parser'),
+        underscore: require('underscore'),
+        validator: require('validator')
     },
     directory: __dirname + '/modules/',
     modules: {
@@ -45,6 +47,21 @@ var config = {
                         homepage: pkg.homepage
                     };
                 }()
+            },
+            validate: function (validator) {
+                return {
+                    email: function (input) {
+                        input = validator.trim(input);
+                        if (!validator.isEmail(input)) {
+                            throw new Error('invalid email');
+                        }
+                        return input;
+                    },
+                    password: function (input) {
+                        input = validator.trim(input);
+                        return input;
+                    }
+                };
             }
         }
     }
