@@ -66,7 +66,9 @@ var config = {
                         return input;
                     }
                 };
-            }
+            },
+            password: {},
+            user: {}
         }
     }
 };
