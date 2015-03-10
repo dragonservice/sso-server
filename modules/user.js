@@ -64,7 +64,7 @@ module.exports = function (config, libraries, services) {
             var query = { email: req.body.email };
             db.users.findOne(query, function (err, user) {
                 if (!user) {
-                    res('unknown email');
+                    res.json('unknown email');
                     return;
                 }
                 var forget = {
@@ -86,13 +86,18 @@ module.exports = function (config, libraries, services) {
         '/reset',
         validate.password('password'),
         function (req, res) {
-
-            // load and remove token
-            req.body.token;
-            // set password
-            req.body.password;
-
-            res.json();
+            db.forgets.findById(req.body.token, function (err, forget) {
+                if (!forget) {
+                    res.json('wrong token');
+                    return;
+                }
+                db.forgets.removeById(req.body.token, function () {});
+                password.hash(req.body.password, function (passwordhash) {
+                    db.users.updateById(forget.user_id, { $set: { passwordhash: passwordhash } }, function () {
+                        res.json();
+                    });
+                });
+            });
         }
     );
 
