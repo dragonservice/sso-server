@@ -6,6 +6,7 @@ var config = {
     libraries: {
         bodyParser: require('body-parser'),
         passwordHash: require('password-hash'),
+        postmark: require('postmark'),
         underscore: require('underscore'),
         validator: require('validator')
     },
@@ -34,6 +35,9 @@ var config = {
                     options: { safe: true }
                 },
                 collections: {
+                    forgets: [
+                        []
+                    ],
                     users: [
                         [{ email: 1 }, { sparse: true, unique: true }]
                     ]
@@ -53,6 +57,13 @@ var config = {
                     };
                 }()
             },
+            password: {},
+            send: {
+                token: process.env.POSTMARK_API_TOKEN,
+                defaults: {
+                    From: 'no-reply@dragonprojects.de'
+                }
+            },
             validate: function (validator) {
                 return {
                     email: function (input) {
@@ -68,8 +79,9 @@ var config = {
                     }
                 };
             },
-            password: {},
-            user: {}
+            user: {
+                reset: process.env.RESET
+            }
         }
     }
 };

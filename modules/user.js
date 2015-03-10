@@ -3,13 +3,16 @@
 /**
  * Handle the user
  * @example
-    user: {}
+    user: {
+        reset: ''
+    }
  */
 
 module.exports = function (config, libraries, services) {
     var app = services.app,
         db = services.db,
         password = services.password,
+        send = services.send,
         validate = services.validate;
 
     app.post(
@@ -64,10 +67,16 @@ module.exports = function (config, libraries, services) {
                     res('unknown email');
                     return;
                 }
-
-                // create and save token
-                // send email with token
-
+                var forget = {
+                    user_id: user._id
+                };
+                db.forgets.insert(forget, function () {
+                    send({
+                        To: user.email,
+                        Subject: 'Password forget',
+                        TextBody: config.reset.replace('%token%', forget._id)
+                    });
+                });
                 res.json();
             });
         }
