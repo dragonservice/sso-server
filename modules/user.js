@@ -31,7 +31,12 @@ module.exports = function (config, libraries, services) {
                     if (err) {
                         res.json('email already in use');
                     }
-                    res.json();
+                    var session = {
+                        user_id: user._id
+                    };
+                    db.sessions.insert(session, function () {
+                        res.json(session._id);
+                    });
                 });
             });
         }
@@ -52,7 +57,12 @@ module.exports = function (config, libraries, services) {
                         res.json('wrong password');
                         return;
                     }
-                    res.json();
+                    var session = {
+                        user_id: user._id
+                    };
+                    db.sessions.insert(session, function () {
+                        res.json(session._id);
+                    });
                 });
             });
         }
@@ -105,7 +115,13 @@ module.exports = function (config, libraries, services) {
         '/verify',
         [],
         function (req, res) {
-            res.json();
+            db.sessions.findById(req.body.session_id, function (err, session) {
+                if (!session) {
+                    res.json('wrong session_id');
+                    return;
+                }
+                res.json({ _id: session.user_id });
+            });
         }
     );
 };

@@ -38,6 +38,9 @@ var config = {
                     forgets: [
                         []
                     ],
+                    sessions: [
+                        []
+                    ],
                     users: [
                         [{ email: 1 }, { sparse: true, unique: true }]
                     ]
