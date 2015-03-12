@@ -84,7 +84,7 @@ module.exports = function (config, libraries, services) {
                     send({
                         To: user.email,
                         Subject: 'Password forget',
-                        TextBody: config.reset.replace('%token%', forget._id)
+                        TextBody: config.reset.replace('%token%', forget._id).replace('%referrer%', req.body.referrer)
                     });
                 });
                 res.json();
