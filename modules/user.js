@@ -32,7 +32,8 @@ module.exports = function (config, libraries, services) {
                         res.json('email already in use');
                     }
                     var session = {
-                        user_id: user._id
+                        user_id: user._id,
+                        email: user.email
                     };
                     db.sessions.insert(session, function () {
                         res.json(session._id);
@@ -58,7 +59,8 @@ module.exports = function (config, libraries, services) {
                         return;
                     }
                     var session = {
-                        user_id: user._id
+                        user_id: user._id,
+                        email: user.email
                     };
                     db.sessions.insert(session, function () {
                         res.json(session._id);
@@ -120,7 +122,17 @@ module.exports = function (config, libraries, services) {
                     res.json('wrong session_id');
                     return;
                 }
-                res.json({ _id: session.user_id });
+                res.json({ _id: session.user_id, email: session.email });
+            });
+        }
+    );
+
+    app.post(
+        '/logout',
+        [],
+        function (req, res) {
+            db.sessions.removeById(req.body.session_id, function () {
+                res.json();
             });
         }
     );
