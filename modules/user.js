@@ -117,9 +117,9 @@ module.exports = function (config, libraries, services) {
         '/verify',
         [],
         function (req, res) {
-            db.sessions.findById(req.body.session_id, function (err, session) {
+            db.sessions.findById(req.body.session, function (err, session) {
                 if (!session) {
-                    res.json('wrong session_id');
+                    res.json('wrong session');
                     return;
                 }
                 res.json({ _id: session.user_id, email: session.email });
@@ -131,7 +131,7 @@ module.exports = function (config, libraries, services) {
         '/logout',
         [],
         function (req, res) {
-            db.sessions.removeById(req.body.session_id, function () {
+            db.sessions.removeById(req.body.session function () {
                 res.json();
             });
         }
