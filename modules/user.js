@@ -131,7 +131,7 @@ module.exports = function (config, libraries, services) {
         '/logout',
         [],
         function (req, res) {
-            db.sessions.removeById(req.body.session function () {
+            db.sessions.removeById(req.body.session, function () {
                 res.json();
             });
         }
