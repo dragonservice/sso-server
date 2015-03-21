@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Handle the user

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Services for validate input from the client

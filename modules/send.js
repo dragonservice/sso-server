@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
  * Service for sending mail
